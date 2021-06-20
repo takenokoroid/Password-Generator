@@ -1,25 +1,78 @@
 <template>
   <div class="d-flex justify-content-center">
-    <div
-      class="rounded-3 bg-primary text-white p-3 shadow-lg"
-      style="height:300px;"
-    >
-      <p class="fw-bold h1">Password Generator</p>
-      <div class="rounded-3 bg-secondary">
-        <p>Choose Options</p>
+    <div class="rounded-3 bg-midnightblue text-white p-3 shadow-lg">
+      <div class="fw-bold fs-3">Password Generator</div>
+      <div class="rounded-3 bg-darkblue">
+        <div>Choose Options</div>
       </div>
+      <div class="text-start small mt-3">Length:</div>
+      <div class="bg-darkblue pt-3 pb-2 pe-2 ps-2 rounded-3">
+        <input type="range" class="form-range" min="4" max="32" />
+      </div>
+      <div class="text-start small mt-3">
+        Settings:
+      </div>
+      <SettingButton
+        v-for="(setting, index) in state.settings"
+        :key="index"
+        :setting="setting"
+      ></SettingButton>
+      <button type="button" class="btn btn-secondary mt-3">
+        GENERATE PASSWORD
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-export default {
+import SettingButton from "./SettingButton.vue";
+import { defineComponent, reactive } from "vue";
+export default defineComponent({
   name: "GeneratorHome",
-};
+  components: {
+    SettingButton,
+  },
+  setup() {
+    //datas
+    const state = reactive({
+      settings: [
+        {
+          name: "Uppercase",
+          isCheck: false,
+        },
+        {
+          name: "Lowercase",
+          isCheck: false,
+        },
+        {
+          name: "Numbers",
+          isCheck: false,
+        },
+        {
+          name: "Symbols",
+          isCheck: false,
+        },
+      ],
+    });
+    return { state };
+  },
+});
 </script>
 
-<style lang="scss" scoped>
-.bg-blue-700 {
-  background-color: $blue-700;
+<style scoped>
+.form-range::-webkit-slider-thumb {
+  background: #fff;
+}
+.form-range::-moz-slider-thumb {
+  background: #fff;
+}
+.bg-midnightblue {
+  background-color: #191970;
+}
+.bg-royalblue {
+  background-color: #4169e1;
+}
+.bg-darkblue {
+  background-color: #043c78;
 }
 </style>
