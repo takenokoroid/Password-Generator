@@ -3,10 +3,15 @@
     <div class="rounded-3 bg-midnightblue text-white p-3 shadow-lg">
       <div class="fw-bold fs-3">Password Generator</div>
       <div class="rounded-3 bg-darkblue p-3">
-        <div v-if="state.button" class="fs-4">Choose Options</div>
-        <div class="spinner-border" role="status" v-else>
+        <div v-if="state.button === 'A'" class="fs-4">Choose Options</div>
+        <div
+          class="spinner-border"
+          role="status"
+          v-else-if="state.button === 'B'"
+        >
           <span class="visually-hidden">Loading...</span>
         </div>
+        <div class="fs-4" v-else>{{ state.msg }}</div>
       </div>
 
       <div class="text-start small mt-3">Length:</div>
@@ -61,10 +66,12 @@ export default defineComponent({
           isCheck: false,
         },
       ],
-      button: true,
+      button: "A",
+      msg: "L!Aqe4sTs",
     });
     const generatePassword = () => {
-      state.button = !state.button;
+      state.button = "B";
+      setTimeout(() => (state.button = "C"), 700);
     };
     return { state, generatePassword };
   },
