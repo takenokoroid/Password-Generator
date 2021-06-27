@@ -1,23 +1,23 @@
 <template>
-  <div class="d-flex justify-content-center">
-    <div class="rounded-3 bg-main text-white fw-bold p-3 shadow-lg">
-      <div class="fw-bold fs-3">Password Generator</div>
-      <div class="rounded-3 bg-sub p-3">
+  <div class="row justify-content-center">
+    <div class="col-6  text-white fw-bold p-3 shadow-main">
+      <div class="fw-bold fs-3 ">Password Generator</div>
+      <div class="rounded-3 border border-hot p-3 ">
         <div v-if="state.passwordFlag === 'A'" class="fs-4">Choose Options</div>
         <div
           class="spinner-border"
           role="status"
           v-else-if="state.passwordFlag === 'B'"
         >
-          <pre class="visually-hidden">Loading...</pre>
+          <div class="visually-hidden">Loading...</div>
         </div>
-        <pre class="fs-4" v-else>{{ state.msg }}</pre>
+        <div class="fs-4" v-else>{{ state.msg }}</div>
       </div>
 
       <div class="text-start small mt-3">
         Length:<span class="fs-6 fw-bold">{{ state.length }}</span>
       </div>
-      <div class="bg-sub pt-3 pb-2 pe-2 ps-2 rounded-3">
+      <div class="border border-hot pt-3 pb-2 pe-2 ps-2 rounded-3">
         <label for="customRange2" class="form-label"></label>
         <input
           type="range"
@@ -86,26 +86,22 @@ export default defineComponent({
     };
     const showPassword = (length) => {
       state.passwordFlag = "B";
-      state.msg = generatePassword(length) || "Please Choose Options";
-      // result !== ""
-      //   ? (state.msg = result)
-      //   : (state.msg = "Please Choose Options");
+      state.msg = generatePassword(length) || "Please Choose Settings";
       setTimeout(() => (state.passwordFlag = "C"), 700);
     };
     const generatePassword = (length) => {
       const types = {
-        lower: "abcdefghijklmnopqrstuvwxyz",
         upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        lower: "abcdefghijklmnopqrstuvwxyz",
         number: "1234567890",
         symbol: "#$%(){}@!?",
       };
       let cipherGenerateString = "";
       //パスワードを生成するためのもとの文字列を生成。settingで回したほうがきれいにできそう
-      if (state.settings[0].isCheck) cipherGenerateString += types.lower;
-      if (state.settings[1].isCheck) cipherGenerateString += types.upper;
+      if (state.settings[0].isCheck) cipherGenerateString += types.upper;
+      if (state.settings[1].isCheck) cipherGenerateString += types.lower;
       if (state.settings[2].isCheck) cipherGenerateString += types.number;
       if (state.settings[3].isCheck) cipherGenerateString += types.symbol;
-      console.log(cipherGenerateString);
 
       // パスワードの生成
       let result = "";
@@ -133,12 +129,30 @@ export default defineComponent({
   background: #fff;
 }
 .bg-main {
-  background-color: #00acee;
+  background-color: #15202b;
 }
 .bg-hot {
   background-color: #ff5311;
 }
 .bg-sub {
   background-color: #9a9492;
+}
+.text-hot {
+  color: #6ef5d2;
+  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-width: 0.5px;
+}
+.border-hot {
+  border-color: #ff5311 !important;
+}
+.shadow-main {
+  border-radius: 46px;
+  background: #15202b;
+  box-shadow: 36px 36px 0px #080d11, -36px -36px 0px #223345;
+}
+.shadow-hot {
+  border-radius: 50px;
+  background: #1a91da;
+  box-shadow: 20px 20px 60px #167bb9, -20px -20px 60px #1ea7fb;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-sub form-switch p-2 m-1 rounded-3 ">
+  <div class="border border-hot form-switch p-2 m-1 rounded-3 ">
     <div class="d-flex justify-content-between">
       <div class="">Include {{ setting.name }}</div>
       <input
@@ -46,7 +46,7 @@ export default defineComponent({
 .form-check-input {
   transform: scale(1.3);
 }
-.bg-sub {
-  background-color: #64a4cf;
+.border-hot {
+  border-color: #ff5311 !important;
 }
 </style>
