@@ -1,14 +1,19 @@
 <template>
-  <div class="bg-darkblue form-switch p-2 m-1 rounded-3 ">
+  <div class="bg-sub form-switch p-2 m-1 rounded-3 ">
     <div class="d-flex justify-content-between">
       <div class="">Include {{ setting.name }}</div>
-      <input class="form-check-input me-2" type="checkbox" />
+      <input
+        @change="changeCheckBox"
+        class="form-check-input me-2"
+        type="checkbox"
+        v-model="state.checked"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
 export default defineComponent({
   name: "SettingBuuton",
   props: {
@@ -19,8 +24,21 @@ export default defineComponent({
         isCheck: false,
       }),
     },
+    index: {
+      type: Number,
+      default: 0,
+    },
   },
-  setup() {},
+  setup(props, context) {
+    const state = reactive({
+      checked: false,
+    });
+    const changeCheckBox = () => {
+      context.emit("changeRadio", props.index, state.checked);
+    };
+
+    return { state, changeCheckBox };
+  },
 });
 </script>
 
@@ -28,7 +46,7 @@ export default defineComponent({
 .form-check-input {
   transform: scale(1.3);
 }
-.bg-darkblue {
-  background-color: #043c78;
+.bg-sub {
+  background-color: #64a4cf;
 }
 </style>
