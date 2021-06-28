@@ -3,7 +3,7 @@
     class="rounded-3 p-3 border
         border-hot"
   >
-    <div v-if="passwordFlag === 'A'" class="fs-4">Choose Options</div>
+    <div v-if="passwordFlag === 'A'" class="fs-4">Choose Settings</div>
     <div class="spinner-border" role="status" v-else-if="passwordFlag === 'B'">
       <div class="visually-hidden">Loading...</div>
     </div>

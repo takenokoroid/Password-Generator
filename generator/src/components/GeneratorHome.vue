@@ -2,23 +2,19 @@
   <div class="row justify-content-center">
     <div class="col-6  text-white fw-bold p-3 shadow-main border border-hot">
       <div class="fw-bold fs-3 ">Password Generator</div>
+
       <place-displayed-cipher
         :msg="state.msg"
         :passwordFlag="state.passwordFlag"
       ></place-displayed-cipher>
+
       <div class="text-start small mt-3">
         Length:<span class="fs-6 fw-bold">{{ state.length }}</span>
       </div>
-      <div class="border border-hot pt-3 pb-2 pe-2 ps-2 rounded-3">
-        <label for="customRange2" class="form-label"></label>
-        <input
-          type="range"
-          class="form-range"
-          v-model.number="state.length"
-          min="4"
-          max="32"
-        />
-      </div>
+      <place-displayed-range-slider
+        v-model.number="state.length"
+      ></place-displayed-range-slider>
+
       <div class="text-start small mt-3">
         Settings:
       </div>
@@ -43,12 +39,14 @@
 <script>
 import SettingButton from "./SettingButton.vue";
 import placeDisplayedCipher from "./placeDisplayedCipher.vue";
+import placeDisplayedRangeSlider from "./placeDisplayedRangeSlider.vue";
 import { defineComponent, reactive } from "vue";
 export default defineComponent({
   name: "GeneratorHome",
   components: {
     SettingButton,
     placeDisplayedCipher,
+    placeDisplayedRangeSlider,
   },
   setup() {
     //datas
@@ -116,12 +114,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.form-range::-webkit-slider-thumb {
-  background: #fff;
-}
-.form-range::-moz-slider-thumb {
-  background: #fff;
-}
 .bg-main {
   background-color: #15202b;
 }
