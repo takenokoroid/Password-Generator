@@ -56,18 +56,22 @@ export default defineComponent({
         {
           name: "Uppercase",
           isCheck: false,
+          string: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         },
         {
           name: "Lowercase",
           isCheck: false,
+          string: "abcdefghijklmnopqrstuvwxyz",
         },
         {
           name: "Numbers",
           isCheck: false,
+          string: "1234567890",
         },
         {
           name: "Symbols",
           isCheck: false,
+          string: "#$%(){}@!?",
         },
       ],
       passwordFlag: "A",
@@ -83,30 +87,20 @@ export default defineComponent({
       setTimeout(() => (state.passwordFlag = "C"), 700);
     };
     const generatePassword = (length) => {
-      const types = {
-        upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        lower: "abcdefghijklmnopqrstuvwxyz",
-        number: "1234567890",
-        symbol: "#$%(){}@!?",
-      };
       let cipherGenerateString = "";
-      //パスワードを生成するためのもとの文字列を生成。settingで回したほうがきれいにできそう
-      if (state.settings[0].isCheck) cipherGenerateString += types.upper;
-      if (state.settings[1].isCheck) cipherGenerateString += types.lower;
-      if (state.settings[2].isCheck) cipherGenerateString += types.number;
-      if (state.settings[3].isCheck) cipherGenerateString += types.symbol;
-
-      // パスワードの生成
+      //パスワードを生成するためのもとの文字列を生成。
+      state.settings.forEach(
+        (setting) => setting.isCheck && (cipherGenerateString += setting.string)
+      );
+      //パスワードの生成
       let result = "";
-      if (cipherGenerateString !== "") {
-        for (let i = 0; i < length; i++) {
-          result +=
-            cipherGenerateString[
-              Math.floor(Math.random() * (cipherGenerateString.length - 1))
-            ];
-        }
+      for (let i = 0; i < length; i++) {
+        if (!cipherGenerateString) break;
+        result +=
+          cipherGenerateString[
+            Math.floor(Math.random() * (cipherGenerateString.length - 1))
+          ];
       }
-
       return result;
     };
     return { state, showPassword, changeIsCheck };

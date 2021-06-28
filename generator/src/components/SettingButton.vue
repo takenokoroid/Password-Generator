@@ -22,6 +22,7 @@ export default defineComponent({
       default: () => ({
         name: "setting_name",
         isCheck: false,
+        string: "cipherString",
       }),
     },
     index: {
