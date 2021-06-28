@@ -1,19 +1,11 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-6  text-white fw-bold p-3 shadow-main">
+    <div class="col-6  text-white fw-bold p-3 shadow-main border border-hot">
       <div class="fw-bold fs-3 ">Password Generator</div>
-      <div class="rounded-3 border border-hot p-3 ">
-        <div v-if="state.passwordFlag === 'A'" class="fs-4">Choose Options</div>
-        <div
-          class="spinner-border"
-          role="status"
-          v-else-if="state.passwordFlag === 'B'"
-        >
-          <div class="visually-hidden">Loading...</div>
-        </div>
-        <div class="fs-4" v-else>{{ state.msg }}</div>
-      </div>
-
+      <place-displayed-cipher
+        :msg="state.msg"
+        :passwordFlag="state.passwordFlag"
+      ></place-displayed-cipher>
       <div class="text-start small mt-3">
         Length:<span class="fs-6 fw-bold">{{ state.length }}</span>
       </div>
@@ -50,11 +42,13 @@
 
 <script>
 import SettingButton from "./SettingButton.vue";
+import placeDisplayedCipher from "./placeDisplayedCipher.vue";
 import { defineComponent, reactive } from "vue";
 export default defineComponent({
   name: "GeneratorHome",
   components: {
     SettingButton,
+    placeDisplayedCipher,
   },
   setup() {
     //datas
