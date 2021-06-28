@@ -18,13 +18,13 @@
       <div class="text-start small mt-3">
         Settings:
       </div>
-      <SettingButton
+      <setting-button
         @changeRadio="changeIsCheck"
         v-for="(setting, index) in state.settings"
         :key="index"
         :setting="setting"
         :index="index"
-      ></SettingButton>
+      ></setting-button>
 
       <button
         type="button"
