@@ -115,14 +115,6 @@ export default defineComponent({
 .bg-hot {
   background-color: #ff5311;
 }
-.bg-sub {
-  background-color: #9a9492;
-}
-.text-hot {
-  color: #6ef5d2;
-  -webkit-text-stroke-color: white;
-  -webkit-text-stroke-width: 0.5px;
-}
 .border-hot {
   border-color: #ff5311 !important;
 }
