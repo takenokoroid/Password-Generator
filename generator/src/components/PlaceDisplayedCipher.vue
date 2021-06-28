@@ -14,7 +14,7 @@
 <script>
 import { defineComponent } from "vue";
 export default defineComponent({
-  neme: "placeDisplayedCipher",
+  neme: "PlaceDisplayedCipher",
   props: {
     msg: {
       type: String,

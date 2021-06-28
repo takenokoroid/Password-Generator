@@ -25,6 +25,7 @@
         :setting="setting"
         :index="index"
       ></SettingButton>
+
       <button
         type="button"
         class="btn bg-hot mt-3 text-white"
@@ -38,15 +39,15 @@
 
 <script>
 import SettingButton from "./SettingButton.vue";
-import placeDisplayedCipher from "./placeDisplayedCipher.vue";
-import placeDisplayedRangeSlider from "./placeDisplayedRangeSlider.vue";
+import PlaceDisplayedCipher from "./PlaceDisplayedCipher.vue";
+import PlaceDisplayedRangeSlider from "./PlaceDisplayedRangeSlider.vue";
 import { defineComponent, reactive } from "vue";
 export default defineComponent({
   name: "GeneratorHome",
   components: {
     SettingButton,
-    placeDisplayedCipher,
-    placeDisplayedRangeSlider,
+    PlaceDisplayedCipher,
+    PlaceDisplayedRangeSlider,
   },
   setup() {
     //datas

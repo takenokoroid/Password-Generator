@@ -15,7 +15,7 @@
 <script>
 import { defineComponent, reactive } from "vue";
 export default defineComponent({
-  name: "placeDisplayRangeSlider",
+  name: "PlaceDisplayRangeSlider",
   props: {
     length: {
       type: Number,
