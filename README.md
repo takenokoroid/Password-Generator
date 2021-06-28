@@ -12,7 +12,7 @@ Vue3+Bootstrap5 で実装しているよ
 
 ## 公開ページ
 
-こちら
+[こちら](https://takenokoroid.github.io/Password-Generator/)
 
 settings が必ず現れるとは言っていない。
 
