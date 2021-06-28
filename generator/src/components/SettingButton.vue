@@ -1,9 +1,10 @@
 <template>
   <div class="border border-hot form-switch p-2 m-1 rounded-3 ">
     <div class="d-flex justify-content-between">
-      <div class="">Include {{ setting.name }}</div>
+      <label for="radio" class="fs-6 pt-1">Include {{ setting.name }}</label>
       <input
         @change="changeCheckBox"
+        id="radio"
         class="form-check-input me-2"
         type="checkbox"
         v-model="state.checked"

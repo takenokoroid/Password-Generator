@@ -1,23 +1,23 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-6  text-white fw-bold p-3 shadow-main border border-hot">
-      <div class="fw-bold fs-3 ">Password Generator</div>
+      <h1 class="fw-bold fs-3 ">Password Generator</h1>
 
       <place-displayed-cipher
         :msg="state.msg"
         :passwordFlag="state.passwordFlag"
       ></place-displayed-cipher>
 
-      <div class="text-start small mt-3">
+      <h2 class="text-start small mt-3">
         Length:<span class="fs-6 fw-bold">{{ state.length }}</span>
-      </div>
+      </h2>
       <place-displayed-range-slider
         v-model.number="state.length"
       ></place-displayed-range-slider>
 
-      <div class="text-start small mt-3">
+      <h2 class="text-start small mt-3">
         Settings:
-      </div>
+      </h2>
       <setting-button
         @changeRadio="changeIsCheck"
         v-for="(setting, index) in state.settings"

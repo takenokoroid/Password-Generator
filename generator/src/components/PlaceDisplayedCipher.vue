@@ -4,10 +4,10 @@
         border-hot"
   >
     <div v-if="passwordFlag === 'A'" class="fs-4">Choose Settings</div>
-    <div class="spinner-border" role="status" v-else-if="passwordFlag === 'B'">
+    <div v-else-if="passwordFlag === 'B'" class="spinner-border" role="status">
       <div class="visually-hidden">Loading...</div>
     </div>
-    <div class="fs-4" v-else>{{ msg }}</div>
+    <div v-else class="fs-4">{{ msg }}</div>
   </div>
 </template>
 
